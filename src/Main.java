@@ -6,7 +6,7 @@ public class Main {
         GameModel gameInstance = new GameModel();
         gameInstance.startGameState();
 
-        if (gameInstance.checkIfIsTurnedOn()){
+        if (gameInstance.getGamePowerState()){
             while(true){
                 switch (gameInstance.getCurrentGameState()){
                     case MAINMENU:
