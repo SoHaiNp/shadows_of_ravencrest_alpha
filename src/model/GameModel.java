@@ -1,44 +1,39 @@
 package model;
 
+import handler.OptionHandler;
 import util.ClearScreenUtil;
-
-import java.util.Scanner;
 
 public class GameModel {
 
-    private boolean isTurnedOn = false;
+    private boolean gamePowerState;
 
-    private final MenuModel gameMenu = new MenuModel();
-    private PlayerModel playerCharacter;
-
-    private Scanner readChosenOption;
-    private int chosenOption;
     private final ClearScreenUtil clearScreen;
+    private final MenuModel gameMenu = new MenuModel();
+    private final OptionHandler optionHandler;
 
     public enum GameState { MAINMENU, TOWNMENU, HOUSEMENU, STATUSMENU }
     private GameState currentGameState;
 
+    private PlayerModel playerCharacter;
+    private EnemyModel enemyCharacter;
+
     public GameModel() {
-        isTurnedOn = true;
+        gamePowerState = true;
         clearScreen = new ClearScreenUtil();
-        readChosenOption = new Scanner(System.in);
+        optionHandler = new OptionHandler();
 
         //TODO Implementar um menu de criação de personagem...
         playerCharacter = new PlayerModel("Lucian Nicolas",100,90,100,50,
                 25,25,100,1000,1,99);
+        enemyCharacter = new EnemyModel("Zombie", 20, 20, 15, 10);
     }
 
-    public void setGamePower(boolean isTurnedOn){
-        this.isTurnedOn = isTurnedOn;
-    }
-    public boolean checkIfIsTurnedOn(){
-        return isTurnedOn;
+    public void setGamePowerState(boolean isTurnedOn){
+        this.gamePowerState = isTurnedOn;
     }
 
-    public int returnChosenOption(){
-        chosenOption = readChosenOption.nextInt();
-        readChosenOption.nextLine();
-        return chosenOption;
+    public boolean getGamePowerState(){
+        return gamePowerState;
     }
 
     public void setCurrentGameState(GameState currentGameState){
@@ -49,12 +44,12 @@ public class GameModel {
         return currentGameState;
     }
 
-    //TODO Buscar tratamento quando inputar opções inválidas...
+    //TODO Buscar tratamento quando inputar opções inválidas (provavelmente try-catch)...
     public void startGameState(){
         clearScreen.clear();
         gameMenu.displayMainMenu();
 
-        switch (returnChosenOption()){
+        switch (optionHandler.returnChosenOption()){
             case 1:
                 System.out.println("Mudando para Cidade...");
                 currentGameState = GameState.TOWNMENU;
@@ -65,7 +60,7 @@ public class GameModel {
                 break;
             case 3:
                 System.out.println("Encerrando Jogo...");
-                setGamePower(false);
+                setGamePowerState(false);
         }
     }
 
@@ -73,7 +68,7 @@ public class GameModel {
         clearScreen.clear();
         gameMenu.displayTownMenu();
 
-        switch (returnChosenOption()){
+        switch (optionHandler.returnChosenOption()){
             case 1:
                 System.out.println("Mudando para Cidade...");
                 setCurrentGameState(GameState.HOUSEMENU);
@@ -107,7 +102,7 @@ public class GameModel {
         clearScreen.clear();
         gameMenu.displayHouseMenu();
 
-        switch (returnChosenOption()){
+        switch (optionHandler.returnChosenOption()){
             case 1:
                 System.out.println("Mudando para Cidade...");
                 setCurrentGameState(GameState.TOWNMENU);
@@ -131,7 +126,7 @@ public class GameModel {
         clearScreen.clear();
         gameMenu.displayPlayerStatusMenu(playerCharacter);
 
-        switch (returnChosenOption()){
+        switch (optionHandler.returnChosenOption()){
             case 1:
                 //TODO Implementar menu de Iventário...
                 break;
