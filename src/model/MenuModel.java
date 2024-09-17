@@ -22,4 +22,12 @@ public class MenuModel {
         MENUTEXTUTIL.playerStatusMenuText(playerModel);
     }
 
+    public void displayPlayerTurnMenu(PlayerModel playerCharacter, EnemyModel enemyCharacter){
+        MENUTEXTUTIL.playerTurnMenuText(playerCharacter, enemyCharacter);
+    }
+
+    public void displayEnemyTurnMenu(PlayerModel playerCharacter, EnemyModel enemyCharacter){
+        MENUTEXTUTIL.enemyTurnMenuText(playerCharacter, enemyCharacter);
+    }
+
 }

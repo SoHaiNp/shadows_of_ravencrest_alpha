@@ -1,19 +1,18 @@
-package handler;
+package util;
 
 import java.util.Scanner;
 
-public class OptionHandler {
+public class KeyListenerUtil {
 
     private final Scanner readChosenOption;
 
-    public OptionHandler(){
+    public KeyListenerUtil(){
         readChosenOption = new Scanner(System.in);
     }
 
-    public int returnChosenOption(){
+    public int getChosenOption(){
         int chosenOption = readChosenOption.nextInt();
         readChosenOption.nextLine(); // Limpa o buffer do Scanner...
         return chosenOption;
     }
-
 }

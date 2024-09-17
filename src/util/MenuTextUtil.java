@@ -1,5 +1,6 @@
 package util;
 
+import model.EnemyModel;
 import model.PlayerModel;
 
 public class MenuTextUtil {
@@ -56,6 +57,24 @@ public class MenuTextUtil {
                 "| 2. Sair do Menu do Personagem\n" +
                 "+ ---------------------------------------------------------------------------- +");
                 //TODO Incrementar opção de vizualização de iventário do personagem...
+    }
+
+    public void playerTurnMenuText(PlayerModel playerCharacter, EnemyModel enemyCharacter){
+        System.out.println("+------------------------- Player Turn -------------------------+");
+        System.out.println("| + " + playerCharacter.getPlayerName() + " +       Life: + " + playerCharacter.getCurrentHealthPoints() + "/" + playerCharacter.getMaximumHealthPoints() +
+                "\n| + " + enemyCharacter.getenemyName() + " +              Life: + " + enemyCharacter.getCurrentHealthPoints() + "/" + enemyCharacter.getMaximumHealthPoints());
+        System.out.println("+------------------------- Options -------------------------+");
+        System.out.println("| 1. Attack the monster");
+        System.out.println("| 2. Deffense position");
+        System.out.println("| 3. Run from the battle\n" +
+                "+ ----------------------------------------------------------+");
+    }
+
+    public void enemyTurnMenuText(PlayerModel playerCharacter, EnemyModel enemyCharacter){
+        System.out.println("+------------------------- Enemy Turn -------------------------+");
+        System.out.println("| + " + playerCharacter.getPlayerName() + " +       Life: + " + playerCharacter.getCurrentHealthPoints() + "/" + playerCharacter.getMaximumHealthPoints() +
+                "\n| + " + enemyCharacter.getenemyName() + " +              Life: + " + enemyCharacter.getCurrentHealthPoints() + "/" + enemyCharacter.getMaximumHealthPoints());
+        System.out.println("+------------------------- Options -------------------------+");
     }
 
 }

@@ -1,13 +1,19 @@
+import handler.BattleHandler;
 import model.GameModel;
+import model.PlayerModel;
 
 public class Main {
 
     public static void main(String[] args) {
         GameModel gameInstance = new GameModel();
         gameInstance.startGameState();
+        BattleHandler debugBattleHandler = new BattleHandler();
 
         if (gameInstance.getGamePowerState()){
-            while(true){
+
+            debugBattleHandler.battleState(gameInstance.getDebugPlayerCharacter(), gameInstance.getDebugEnemyCharacter());
+
+/*            while(true){
                 switch (gameInstance.getCurrentGameState()){
                     case MAINMENU:
                         gameInstance.startGameState();
@@ -22,7 +28,7 @@ public class Main {
                         gameInstance.statusMenuState();
                         break;
                 }
-            }
+            }*/
         }
     }
 }

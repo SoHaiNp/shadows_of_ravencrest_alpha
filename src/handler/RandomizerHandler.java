@@ -4,6 +4,7 @@ import java.util.Random;
 
 public class RandomizerHandler {
 
+    //TODO Refatorar essa classe, para que seja possível usar apenas um atributo e um método para a mesma tarefa...
     private final Random encounterRandomizer;
     private final Random monsterRandomizer;
     private final Random spoilRandomizer;

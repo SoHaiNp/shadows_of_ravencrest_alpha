@@ -2,26 +2,26 @@ package model;
 
 public class EnemyModel {
 
-    private String monsterName;
+    private String enemyName;
     private int maximumHealthPoints;
     private int currentHealthPoints;
     private int attackPoints;
     private int defensePoints;
 
-    public EnemyModel(String monsterName, int maximumHealthPoints, int currentHealthPoints, int attackPoints, int defensePoints) {
-        this.monsterName = monsterName;
+    public EnemyModel(String enemyName, int maximumHealthPoints, int currentHealthPoints, int attackPoints, int defensePoints) {
+        this.enemyName = enemyName;
         this.maximumHealthPoints = maximumHealthPoints;
         this.currentHealthPoints = currentHealthPoints;
         this.attackPoints = attackPoints;
         this.defensePoints = defensePoints;
     }
 
-    public String getMonsterName() {
-        return monsterName;
+    public String getenemyName() {
+        return enemyName;
     }
 
-    public void setMonsterName(String monsterName) {
-        this.monsterName = monsterName;
+    public void setenemyName(String enemyName) {
+        this.enemyName = enemyName;
     }
 
     public int getMaximumHealthPoints() {

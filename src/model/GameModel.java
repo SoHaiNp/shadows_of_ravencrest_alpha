@@ -1,31 +1,43 @@
 package model;
 
-import handler.OptionHandler;
 import util.ClearScreenUtil;
+import util.KeyListenerUtil;
 
 public class GameModel {
 
     private boolean gamePowerState;
 
-    private final ClearScreenUtil clearScreen;
+    private final ClearScreenUtil clearScreenUtil;
     private final MenuModel gameMenu = new MenuModel();
-    private final OptionHandler optionHandler;
+    private final KeyListenerUtil keyListenerUtil;
 
     public enum GameState { MAINMENU, TOWNMENU, HOUSEMENU, STATUSMENU }
     private GameState currentGameState;
 
-    private PlayerModel playerCharacter;
-    private EnemyModel enemyCharacter;
+    private PlayerModel debugPlayerCharacter;
+    private EnemyModel debugEnemyCharacter;
 
     public GameModel() {
         gamePowerState = true;
-        clearScreen = new ClearScreenUtil();
-        optionHandler = new OptionHandler();
+        clearScreenUtil = new ClearScreenUtil();
+        keyListenerUtil = new KeyListenerUtil();
 
         //TODO Implementar um menu de criação de personagem...
-        playerCharacter = new PlayerModel("Lucian Nicolas",100,90,100,50,
-                25,25,100,1000,1,99);
-        enemyCharacter = new EnemyModel("Zombie", 20, 20, 15, 10);
+        debugPlayerCharacter = new PlayerModel("Lucian Nicolas",100,100,
+                100,100,25,25,100,
+                1000,1,99);
+
+        debugEnemyCharacter = new EnemyModel("Zombie", 100, 100, 15,
+                10);
+    }
+
+    //TODO Futuramente, remover métodos de debug do player...
+    public PlayerModel getDebugPlayerCharacter(){
+        return debugPlayerCharacter;
+    }
+    //TODO Futuramente, remover métodos de debug do enemy...
+    public EnemyModel getDebugEnemyCharacter(){
+        return debugEnemyCharacter;
     }
 
     public void setGamePowerState(boolean isTurnedOn){
@@ -46,13 +58,13 @@ public class GameModel {
 
     //TODO Buscar tratamento quando inputar opções inválidas (provavelmente try-catch)...
     public void startGameState(){
-        clearScreen.clear();
+        clearScreenUtil.clearTheScreen();
         gameMenu.displayMainMenu();
 
-        switch (optionHandler.returnChosenOption()){
+        switch (keyListenerUtil.getChosenOption()){
             case 1:
                 System.out.println("Mudando para Cidade...");
-                currentGameState = GameState.TOWNMENU;
+                setCurrentGameState(GameState.TOWNMENU);
                 System.out.println("Mudou para " + getCurrentGameState());
                 break;
             case 2:
@@ -65,10 +77,10 @@ public class GameModel {
     }
 
     public void townMenuState(){
-        clearScreen.clear();
+        clearScreenUtil.clearTheScreen();
         gameMenu.displayTownMenu();
 
-        switch (optionHandler.returnChosenOption()){
+        switch (keyListenerUtil.getChosenOption()){
             case 1:
                 System.out.println("Mudando para Cidade...");
                 setCurrentGameState(GameState.HOUSEMENU);
@@ -99,10 +111,10 @@ public class GameModel {
     }
 
     public void houseMenuState(){
-        clearScreen.clear();
+        clearScreenUtil.clearTheScreen();
         gameMenu.displayHouseMenu();
 
-        switch (optionHandler.returnChosenOption()){
+        switch (keyListenerUtil.getChosenOption()){
             case 1:
                 System.out.println("Mudando para Cidade...");
                 setCurrentGameState(GameState.TOWNMENU);
@@ -123,10 +135,10 @@ public class GameModel {
     }
 
     public void statusMenuState(){
-        clearScreen.clear();
-        gameMenu.displayPlayerStatusMenu(playerCharacter);
+        clearScreenUtil.clearTheScreen();
+        gameMenu.displayPlayerStatusMenu(debugPlayerCharacter);
 
-        switch (optionHandler.returnChosenOption()){
+        switch (keyListenerUtil.getChosenOption()){
             case 1:
                 //TODO Implementar menu de Iventário...
                 break;
