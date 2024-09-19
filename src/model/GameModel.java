@@ -27,6 +27,7 @@ public class GameModel {
                 100,100,25,25,100,
                 1000,1,99);
 
+        //TODO Implementar um menu de geração de monstros...
         debugEnemyCharacter = new EnemyModel("Zombie", 100, 100, 15,
                 10);
     }
@@ -35,6 +36,7 @@ public class GameModel {
     public PlayerModel getDebugPlayerCharacter(){
         return debugPlayerCharacter;
     }
+
     //TODO Futuramente, remover métodos de debug do enemy...
     public EnemyModel getDebugEnemyCharacter(){
         return debugEnemyCharacter;

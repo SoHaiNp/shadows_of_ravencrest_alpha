@@ -4,18 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72977e63-4a97-4972-9569-61f54247cafa" name="Changes" comment="Enemy model, Randomizer options.">
-      <change afterPath="$PROJECT_DIR$/src/handler/BattleHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/handler/ExplorationHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/util/KeyListenerUtil.java" afterDir="false" />
+    <list default="true" id="72977e63-4a97-4972-9569-61f54247cafa" name="Changes" comment="Initial Commit.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/handler/OptionHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/handler/BattleHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/handler/BattleHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/handler/RandomizerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/handler/RandomizerHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/EnemyModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/EnemyModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/GameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/GameModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/MenuModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/MenuModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/ClearScreenUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/ClearScreenUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/KeyListenerUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/KeyListenerUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/util/MenuTextUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/MenuTextUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,6 +33,10 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/handler/BattleHandler.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
@@ -85,15 +85,7 @@
       <option name="project" value="LOCAL" />
       <updated>1726025697269</updated>
     </task>
-    <task id="LOCAL-00002" summary="Enemy model, Randomizer options.">
-      <option name="closed" value="true" />
-      <created>1726521098434</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1726521098434</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -109,7 +101,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commit." />
-    <MESSAGE value="Enemy model, Randomizer options." />
-    <option name="LAST_COMMIT_MESSAGE" value="Enemy model, Randomizer options." />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial Commit." />
   </component>
 </project>

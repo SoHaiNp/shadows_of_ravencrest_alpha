@@ -1,9 +1,7 @@
 import handler.BattleHandler;
 import model.GameModel;
-import model.PlayerModel;
 
 public class Main {
-
     public static void main(String[] args) {
         GameModel gameInstance = new GameModel();
         gameInstance.startGameState();

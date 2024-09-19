@@ -15,4 +15,8 @@ public class KeyListenerUtil {
         readChosenOption.nextLine(); // Limpa o buffer do Scanner...
         return chosenOption;
     }
+
+    public void optionToProceed(){
+        readChosenOption.nextInt();
+    }
 }

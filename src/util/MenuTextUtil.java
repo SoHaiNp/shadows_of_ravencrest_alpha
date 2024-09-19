@@ -59,22 +59,35 @@ public class MenuTextUtil {
                 //TODO Incrementar opção de vizualização de iventário do personagem...
     }
 
-    public void playerTurnMenuText(PlayerModel playerCharacter, EnemyModel enemyCharacter){
-        System.out.println("+------------------------- Player Turn -------------------------+");
-        System.out.println("| + " + playerCharacter.getPlayerName() + " +       Life: + " + playerCharacter.getCurrentHealthPoints() + "/" + playerCharacter.getMaximumHealthPoints() +
-                "\n| + " + enemyCharacter.getenemyName() + " +              Life: + " + enemyCharacter.getCurrentHealthPoints() + "/" + enemyCharacter.getMaximumHealthPoints());
-        System.out.println("+------------------------- Options -------------------------+");
-        System.out.println("| 1. Attack the monster");
-        System.out.println("| 2. Deffense position");
-        System.out.println("| 3. Run from the battle\n" +
-                "+ ----------------------------------------------------------+");
+    public void playerTurnHeaderText(PlayerModel playerCharacter, EnemyModel enemyCharacter){
+        System.out.println("+---------------------- Turno Jogador -------------------------+\n" +
+                "| + " + playerCharacter.getPlayerName() + " +       Life: + " + playerCharacter.getCurrentHealthPoints() + "/" + playerCharacter.getMaximumHealthPoints() + "\n" +
+                "| + " + enemyCharacter.getenemyName() + " +              Life: + " + enemyCharacter.getCurrentHealthPoints() + "/" + enemyCharacter.getMaximumHealthPoints() + "\n" +
+                "+------------------------- Opções -------------------------+\n" +
+                "| 1. Atacar o inimigo\n" +
+                "| 2. Defender\n" +
+                "| 3. Fugir da batalha\n" +
+                "+----------------------------------------------------------+");
     }
 
-    public void enemyTurnMenuText(PlayerModel playerCharacter, EnemyModel enemyCharacter){
-        System.out.println("+------------------------- Enemy Turn -------------------------+");
-        System.out.println("| + " + playerCharacter.getPlayerName() + " +       Life: + " + playerCharacter.getCurrentHealthPoints() + "/" + playerCharacter.getMaximumHealthPoints() +
-                "\n| + " + enemyCharacter.getenemyName() + " +              Life: + " + enemyCharacter.getCurrentHealthPoints() + "/" + enemyCharacter.getMaximumHealthPoints());
-        System.out.println("+------------------------- Options -------------------------+");
+    public void enemyTurnHeaderText(PlayerModel playerCharacter, EnemyModel enemyCharacter){
+        System.out.println("+---------------------- Turno Inimigo -------------------------+\n" +
+                "| + " + playerCharacter.getPlayerName() + " +       Life: + " + playerCharacter.getCurrentHealthPoints() + "/" + playerCharacter.getMaximumHealthPoints() + "\n" +
+                "| + " + enemyCharacter.getenemyName() + " +              Life: + " + enemyCharacter.getCurrentHealthPoints() + "/" + enemyCharacter.getMaximumHealthPoints());
+    }
+
+    public void playerDamageCalculationFooterText(PlayerModel playerCharacter){
+        System.out.println("+------------------------- Mensagem -------------------------+\n" +
+                "| Você CAUSOU + " + playerCharacter.getAttackPoints() + " + de dano...\n" +
+                "| Pressione um número para passar o turno...\n" +
+                "+-----------------------------------------------------------+");
+    }
+
+    public void enemyDamageCalculationFooterText(EnemyModel enemyCharacter){
+        System.out.println("+------------------------- Mensagem -------------------------+\n" +
+                "| Você SOFREU + " + enemyCharacter.getAttackPoints() + " + de dano...\n" +
+                "| Pressione um número para passar o turno...\n" +
+                "+-----------------------------------------------------------+");
     }
 
 }

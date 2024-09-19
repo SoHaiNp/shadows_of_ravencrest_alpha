@@ -24,47 +24,37 @@ public class BattleHandler {
     public void battleState(PlayerModel playerCharacter, EnemyModel enemyCharacter){
         currentBattleState = BattleState.PLAYERTURN;
 
-        //TODO Revisar método while. Validar se de fato está influenciando em algo...
-        while (playerCharacter.getCurrentHealthPoints() >= 0 || enemyCharacter.getCurrentHealthPoints() >= 0){
+        while (true){
             switch (currentBattleState){
                 case PLAYERTURN:
-                    // Turno do Jogador...
                     clearScreenUtil.clearTheScreen();
-                    menuModel.displayPlayerTurnMenu(playerCharacter, enemyCharacter);
+                    menuModel.displayPlayerTurnHeader(playerCharacter, enemyCharacter);
                     playerTurn(playerCharacter, enemyCharacter);
                     break;
                 case ENEMYTURN:
-                    // Turno do Inimigo...
                     clearScreenUtil.clearTheScreen();
-                    menuModel.displayEnemyTurnMenu(playerCharacter, enemyCharacter);
+                    menuModel.displayEnemyTurnHeader(playerCharacter, enemyCharacter);
                     enemyTurn(enemyCharacter, playerCharacter);
                     break;
                 case ENDBATTLE:
-                    // Fim da batalha...
                     clearScreenUtil.clearTheScreen();
-                    menuModel.displayPlayerTurnMenu(playerCharacter, enemyCharacter);
+                    //TODO Adicionar fluxo de contagem de experiência e retorno para exploração...
+                    menuModel.displayPlayerTurnHeader(playerCharacter, enemyCharacter);
                     System.out.println("Fim da batalha...");
                     return;
             }
         }
     }
 
-    public void setCurrentBattleState(BattleState currentBattleState){
-        this.currentBattleState = currentBattleState;
-    }
-
-    //TODO Revisar método de turno do player. Tentar diminuir sua responsabilidade...
     public void playerTurn(PlayerModel playerCharacter, EnemyModel enemyCharacter){
-        int playerAttackDamage = playerCharacter.getAttackPoints();
-        int enemyHealth = enemyCharacter.getCurrentHealthPoints();
 
         switch (keyListenerUtil.getChosenOption()){
             case 1:
                 // Atacou...
-                enemyCharacter.setCurrentHealthPoints(enemyHealth -= playerAttackDamage);
+                playerAttack(playerCharacter, enemyCharacter);
                 if (!isEnemyDead(enemyCharacter)){
-                    System.out.println("| Você causou + " + playerAttackDamage + " + de dano...\n| Pressione 1 para passar o turno...\n+-----------------------------------------------------------+");
-                    keyListenerUtil.getChosenOption();
+                    menuModel.displayPlayerDamageCalculationFooter(playerCharacter);
+                    keyListenerUtil.optionToProceed();
                     setCurrentBattleState(BattleState.ENEMYTURN);
                 } else {
                     setCurrentBattleState(BattleState.ENDBATTLE);
@@ -79,29 +69,42 @@ public class BattleHandler {
         }
     }
 
-    //TODO Revisar método de turno do inimigo. Tentar diminuir sua responsabilidade...
     public void enemyTurn(EnemyModel enemyCharacter, PlayerModel playerCharacter){
-        int enemyAttackDamage = enemyCharacter.getAttackPoints();
-        int playerHealth = playerCharacter.getCurrentHealthPoints();
-
-        playerCharacter.setCurrentHealthPoints(playerHealth -= enemyAttackDamage);
+        enemyAttack(enemyCharacter, playerCharacter);
 
         if(!isPlayerDead(playerCharacter)){
-            System.out.println("| Você sofreu + " + enemyAttackDamage + " + de dano...\n| Pressione 1 para passar o turno...");
-            if (keyListenerUtil.getChosenOption() == 1){
-                setCurrentBattleState(BattleState.PLAYERTURN);
-            }
+            menuModel.displayEnemyDamageCalculationFooter(enemyCharacter);
+            keyListenerUtil.optionToProceed();
+            setCurrentBattleState(BattleState.PLAYERTURN);
         } else {
             setCurrentBattleState(BattleState.ENDBATTLE);
         }
+    }
+
+    public void playerAttack(PlayerModel playerCharacter, EnemyModel enemyCharacter){
+        int playerAttackDamage = playerCharacter.getAttackPoints();
+        int enemyHealthPoints = enemyCharacter.getCurrentHealthPoints();
+
+        enemyCharacter.setCurrentHealthPoints(enemyHealthPoints - playerAttackDamage);
+    }
+
+    public void enemyAttack(EnemyModel enemyCharacter, PlayerModel playerCharacter){
+        int enemyAttackDamage = enemyCharacter.getAttackPoints();
+        int playerHealthPoints = playerCharacter.getCurrentHealthPoints();
+
+        playerCharacter.setCurrentHealthPoints(playerHealthPoints - enemyAttackDamage);
+    }
+
+    public boolean isPlayerDead(PlayerModel playerCharacter){
+        return playerCharacter.getCurrentHealthPoints() <= 0;
     }
 
     public boolean isEnemyDead(EnemyModel enemyCharacter){
         return enemyCharacter.getCurrentHealthPoints() <= 0;
     }
 
-    public boolean isPlayerDead(PlayerModel playerCharacter){
-        return playerCharacter.getCurrentHealthPoints() <= 0;
+    public void setCurrentBattleState(BattleState currentBattleState){
+        this.currentBattleState = currentBattleState;
     }
 
 }
