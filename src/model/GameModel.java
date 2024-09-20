@@ -1,5 +1,6 @@
 package model;
 
+import handler.ExplorationHandler;
 import util.ClearScreenUtil;
 import util.KeyListenerUtil;
 
@@ -8,10 +9,12 @@ public class GameModel {
     private boolean gamePowerState;
 
     private final ClearScreenUtil clearScreenUtil;
-    private final MenuModel gameMenu = new MenuModel();
     private final KeyListenerUtil keyListenerUtil;
+    private final MenuModel gameMenu;
 
-    public enum GameState { MAINMENU, TOWNMENU, HOUSEMENU, STATUSMENU }
+    private final ExplorationHandler explorationHandler;
+
+    public enum GameState { MAINMENU, TOWNMENU, HOUSEMENU, STATUSMENU, EXPLOREMENU }
     private GameState currentGameState;
 
     private PlayerModel debugPlayerCharacter;
@@ -19,8 +22,13 @@ public class GameModel {
 
     public GameModel() {
         gamePowerState = true;
+
         clearScreenUtil = new ClearScreenUtil();
         keyListenerUtil = new KeyListenerUtil();
+
+        explorationHandler = new ExplorationHandler();
+
+        gameMenu = new MenuModel();
 
         //TODO Implementar um menu de criação de personagem...
         debugPlayerCharacter = new PlayerModel("Lucian Nicolas",100,100,
@@ -105,8 +113,9 @@ public class GameModel {
                 //TODO Implementar menu de Guilda do Corvo...
                 break;
             case 6:
-                // Viagem...
-                //TODO Implementar menu de Viagem...
+                System.out.println("Mudando para Exploração...");
+                setCurrentGameState(GameState.EXPLOREMENU);
+                System.out.println("Mudou para " + getCurrentGameState());
                 break;
         }
 
@@ -148,6 +157,23 @@ public class GameModel {
                 System.out.println("Mudando para Casa...");
                 setCurrentGameState(GameState.HOUSEMENU);
                 System.out.println("Mudou para " + getCurrentGameState());
+                break;
+        }
+    }
+
+    public void exploreMenuState(){
+        clearScreenUtil.clearTheScreen();
+        System.out.println("1. Explorar\n" +
+                "2. Voltar para cidade");
+
+        switch (keyListenerUtil.getChosenOption()){
+            case 1:
+                // Explorar...
+                explorationHandler.explorationState(debugPlayerCharacter, debugEnemyCharacter);
+                break;
+            case 2:
+                // Voltar para cidade...
+                setCurrentGameState(GameState.TOWNMENU);
                 break;
         }
     }

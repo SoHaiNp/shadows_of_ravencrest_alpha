@@ -13,7 +13,6 @@ public class PlayerModel {
     private int maximumExperiencePoints;
     private int currentLevel;
     private int maximumLevel;
-    //TODO implementar iventário do personagem...
 
     public PlayerModel(String playerName, int maximumHealthPoints, int currentHealthPoints, int maximumManaPoints, int currentManaPoints, int attackPoints, int defensePoints, int currentExperiencePoints, int maximumExperiencePoints, int currentLevel, int maximumLevel) {
         this.playerName = playerName;

@@ -9,9 +9,9 @@ public class Main {
 
         if (gameInstance.getGamePowerState()){
 
-            debugBattleHandler.battleState(gameInstance.getDebugPlayerCharacter(), gameInstance.getDebugEnemyCharacter());
+//            debugBattleHandler.battleState(gameInstance.getDebugPlayerCharacter(), gameInstance.getDebugEnemyCharacter());
 
-/*            while(true){
+            while(true){
                 switch (gameInstance.getCurrentGameState()){
                     case MAINMENU:
                         gameInstance.startGameState();
@@ -25,8 +25,10 @@ public class Main {
                     case STATUSMENU:
                         gameInstance.statusMenuState();
                         break;
+                    case EXPLOREMENU:
+                        gameInstance.exploreMenuState();
                 }
-            }*/
+            }
         }
     }
 }
