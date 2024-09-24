@@ -12,6 +12,7 @@ public class ExplorationHandler {
     private ExplorationState currentExplorationState;
 
     public ExplorationHandler(){
+        //TODO Verificar possibilidade de mover essa linha para dentro do método explorationState()...
         currentExplorationState = ExplorationState.BATTLE;
 
         randomizerHandler = new RandomizerHandler();
@@ -19,15 +20,19 @@ public class ExplorationHandler {
     }
 
     public void explorationState(PlayerModel playerCharacter, EnemyModel enemyCharacter){
+        //TODO Implementar randomizador de monstros...
         randomizeEncounter();
 
         while (true){
             switch (currentExplorationState){
                 case BATTLE:
                     battleHandler.battleState(playerCharacter, enemyCharacter);
+                    if (battleHandler.getCurrentBattleState() == BattleHandler.BattleState.ENDBATTLE){
+                        return;
+                    }
                     break;
                 case EXPLORE:
-                    // Exploração...
+                    //TODO Criar opções de coleta de itens ao explorar...
                     System.out.println("Explorando...");
                     break;
             }
@@ -35,15 +40,11 @@ public class ExplorationHandler {
     }
 
     public void randomizeEncounter(){
-
         if (randomizerHandler.randomize(5) <=2 ){
-            // Estado de batalha...
             setExplorationState(ExplorationState.BATTLE);
         } else {
-            // Estado de exploração...
             setExplorationState(ExplorationState.EXPLORE);
         }
-
     }
 
     public void setExplorationState(ExplorationState currentExplorationState){

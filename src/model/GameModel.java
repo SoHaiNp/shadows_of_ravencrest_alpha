@@ -30,24 +30,13 @@ public class GameModel {
 
         gameMenu = new MenuModel();
 
-        //TODO Implementar um menu de criação de personagem...
         debugPlayerCharacter = new PlayerModel("Lucian Nicolas",100,100,
                 100,100,25,25,100,
                 1000,1,99);
 
-        //TODO Implementar um menu de geração de monstros...
+        //TODO Implementar randomizador de monstros...
         debugEnemyCharacter = new EnemyModel("Zombie", 100, 100, 15,
                 10);
-    }
-
-    //TODO Futuramente, remover métodos de debug do player...
-    public PlayerModel getDebugPlayerCharacter(){
-        return debugPlayerCharacter;
-    }
-
-    //TODO Futuramente, remover métodos de debug do enemy...
-    public EnemyModel getDebugEnemyCharacter(){
-        return debugEnemyCharacter;
     }
 
     public void setGamePowerState(boolean isTurnedOn){
@@ -73,15 +62,12 @@ public class GameModel {
 
         switch (keyListenerUtil.getChosenOption()){
             case 1:
-                System.out.println("Mudando para Cidade...");
                 setCurrentGameState(GameState.TOWNMENU);
-                System.out.println("Mudou para " + getCurrentGameState());
                 break;
             case 2:
-                //TODO Implementar menu de Novo Jogo (relação com criação de personagem)...
+                //TODO Implementar menu de Novo Jogo...
                 break;
             case 3:
-                System.out.println("Encerrando Jogo...");
                 setGamePowerState(false);
         }
     }
@@ -92,9 +78,7 @@ public class GameModel {
 
         switch (keyListenerUtil.getChosenOption()){
             case 1:
-                System.out.println("Mudando para Cidade...");
                 setCurrentGameState(GameState.HOUSEMENU);
-                System.out.println("Mudou para " + getCurrentGameState());
                 break;
             case 2:
                 // Taverna...
@@ -113,9 +97,7 @@ public class GameModel {
                 //TODO Implementar menu de Guilda do Corvo...
                 break;
             case 6:
-                System.out.println("Mudando para Exploração...");
                 setCurrentGameState(GameState.EXPLOREMENU);
-                System.out.println("Mudou para " + getCurrentGameState());
                 break;
         }
 
@@ -127,20 +109,14 @@ public class GameModel {
 
         switch (keyListenerUtil.getChosenOption()){
             case 1:
-                System.out.println("Mudando para Cidade...");
                 setCurrentGameState(GameState.TOWNMENU);
-                System.out.println("Mudou para " + getCurrentGameState());
                 break;
             case 2:
-                System.out.println("Mudando para Status...");
                 setCurrentGameState(GameState.STATUSMENU);
-                System.out.println("Mudou para " + getCurrentGameState());
                 break;
             case 3:
                 //TODO Ao seguir esse fluxo, por algum motivo não é possível encerrar o jogo quando volta para o Menu Principal...
-                System.out.println("Mudando para Início...");
                 setCurrentGameState(GameState.MAINMENU);
-                System.out.println("Mudou para " + getCurrentGameState());
                 break;
         }
     }
@@ -154,15 +130,14 @@ public class GameModel {
                 //TODO Implementar menu de Iventário...
                 break;
             case 2:
-                System.out.println("Mudando para Casa...");
                 setCurrentGameState(GameState.HOUSEMENU);
-                System.out.println("Mudou para " + getCurrentGameState());
                 break;
         }
     }
 
     public void exploreMenuState(){
         clearScreenUtil.clearTheScreen();
+        //TODO Criar menu de exploração...
         System.out.println("1. Explorar\n" +
                 "2. Voltar para cidade");
 

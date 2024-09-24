@@ -38,7 +38,7 @@ public class BattleHandler {
                     break;
                 case ENDBATTLE:
                     clearScreenUtil.clearTheScreen();
-                    //TODO Adicionar fluxo de contagem de experiência e retorno para exploração...
+                    //TODO Adicionar rotina de contagem de experiência...
                     menuModel.displayPlayerTurnHeader(playerCharacter, enemyCharacter);
                     System.out.println("Fim da batalha...");
                     return;
@@ -50,7 +50,6 @@ public class BattleHandler {
 
         switch (keyListenerUtil.getChosenOption()){
             case 1:
-                // Atacou...
                 playerAttack(playerCharacter, enemyCharacter);
                 if (!isEnemyDead(enemyCharacter)){
                     menuModel.displayPlayerDamageCalculationFooter(playerCharacter);
@@ -61,10 +60,10 @@ public class BattleHandler {
                 }
                 break;
             case 2:
-                // Defendeu...
+                //TODO Implementar sistema de defesa (provavelmente envolve sistema de rolagem de dado e armadura)...
                 break;
             case 3:
-                // Fugiu...
+                //TODO Implementar sistema de fuga...
                 break;
         }
     }
@@ -101,6 +100,10 @@ public class BattleHandler {
 
     public boolean isEnemyDead(EnemyModel enemyCharacter){
         return enemyCharacter.getCurrentHealthPoints() <= 0;
+    }
+
+    public BattleState getCurrentBattleState(){
+        return currentBattleState;
     }
 
     public void setCurrentBattleState(BattleState currentBattleState){
