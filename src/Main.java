@@ -1,12 +1,12 @@
 import model.GameModel;
 
 public class Main {
-
     public static void main(String[] args) {
         GameModel gameInstance = new GameModel();
         gameInstance.startGameState();
 
         if (gameInstance.getGamePowerState()){
+
             while(true){
                 switch (gameInstance.getCurrentGameState()){
                     case MAINMENU:
@@ -21,6 +21,8 @@ public class Main {
                     case STATUSMENU:
                         gameInstance.statusMenuState();
                         break;
+                    case EXPLOREMENU:
+                        gameInstance.exploreMenuState();
                 }
             }
         }

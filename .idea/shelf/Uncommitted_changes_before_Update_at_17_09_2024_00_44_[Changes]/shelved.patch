@@ -1,0 +1,65 @@
+Index: src/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import model.GameModel;\r\n\r\npublic class Main {\r\n\r\n    public static void main(String[] args) {\r\n        GameModel gameInstance = new GameModel();\r\n        gameInstance.startGameState();\r\n\r\n        if (gameInstance.checkIfIsTurnedOn()){\r\n            while(true){\r\n                switch (gameInstance.getCurrentGameState()){\r\n                    case MAINMENU:\r\n                        gameInstance.startGameState();\r\n                        break;\r\n                    case TOWNMENU:\r\n                        gameInstance.townMenuState();\r\n                        break;\r\n                    case HOUSEMENU:\r\n                        gameInstance.houseMenuState();\r\n                        break;\r\n                    case STATUSMENU:\r\n                        gameInstance.statusMenuState();\r\n                        break;\r\n                }\r\n            }\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Main.java b/src/Main.java
+--- a/src/Main.java	(revision fc7120298676bf19f682fbb120e272effdae32c3)
++++ b/src/Main.java	(date 1726469325545)
+@@ -1,7 +1,6 @@
+ import model.GameModel;
+ 
+ public class Main {
+-
+     public static void main(String[] args) {
+         GameModel gameInstance = new GameModel();
+         gameInstance.startGameState();
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"72977e63-4a97-4972-9569-61f54247cafa\" name=\"Changes\" comment=\"Initial Commit.\">\r\n      <change beforePath=\"$PROJECT_DIR$/src/handler/OptionHandler.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/handler/OptionHandler.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;SoHaiNp&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubDefaultAccount\">\r\n    <option name=\"defaultAccountId\" value=\"b8473502-0af5-498d-a14e-79074e9fe916\" />\r\n  </component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/SoHaiNp/shadows_of_ravencrest_alpha.git&quot;,\r\n    &quot;accountId&quot;: &quot;b8473502-0af5-498d-a14e-79074e9fe916&quot;\r\n  }\r\n}</component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 0\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2luM610JiZ7TGM3cIS59iac4hOU\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Application.Game.executor\": \"Run\",\r\n    \"Application.Main.executor\": \"Run\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"git-widget-placeholder\": \"master\",\r\n    \"ignore.virus.scanning.warn.message\": \"true\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"onboarding.tips.debug.path\": \"D:/dev/IntelliJ/shadows_of_ravencrest_alpha/src/Main.java\",\r\n    \"settings.editor.selected.configurable\": \"copyright\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Game\" type=\"Application\" factoryName=\"Application\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Main\" />\r\n      <module name=\"shadows_of_ravencrest_alpha\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"72977e63-4a97-4972-9569-61f54247cafa\" name=\"Changes\" comment=\"\" />\r\n      <created>1726025329926</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1726025329926</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Initial Commit.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1726025697269</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1726025697269</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Initial Commit.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1726025846450</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1726025846450</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Initial Commit.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1726469056153</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1726469056153</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Initial Commit.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1726469129947</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1726469129947</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"5\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"CHECK_NEW_TODO\" value=\"false\" />\r\n    <MESSAGE value=\"Initial Commit.\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Initial Commit.\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision fc7120298676bf19f682fbb120e272effdae32c3)
++++ b/.idea/workspace.xml	(date 1726469386539)
+@@ -5,7 +5,8 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="72977e63-4a97-4972-9569-61f54247cafa" name="Changes" comment="Initial Commit.">
+-      <change beforePath="$PROJECT_DIR$/src/handler/OptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/handler/OptionHandler.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -37,6 +38,9 @@
+     &quot;accountId&quot;: &quot;b8473502-0af5-498d-a14e-79074e9fe916&quot;
+   }
+ }</component>
++  <component name="ProblemsViewState">
++    <option name="selectedTabId" value="CurrentFile" />
++  </component>
+   <component name="ProjectColorInfo">{
+   &quot;associatedIndex&quot;: 0
+ }</component>
+@@ -108,7 +112,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1726469129947</updated>
+     </task>
+-    <option name="localTasksCounter" value="5" />
++    <task id="LOCAL-00005" summary="Initial Commit.">
++      <option name="closed" value="true" />
++      <created>1726469212142</created>
++      <option name="number" value="00005" />
++      <option name="presentableId" value="LOCAL-00005" />
++      <option name="project" value="LOCAL" />
++      <updated>1726469212142</updated>
++    </task>
++    <option name="localTasksCounter" value="6" />
+     <servers />
+   </component>
+   <component name="VcsManagerConfiguration">

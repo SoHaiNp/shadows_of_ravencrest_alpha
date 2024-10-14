@@ -22,4 +22,20 @@ public class MenuModel {
         MENUTEXTUTIL.playerStatusMenuText(playerModel);
     }
 
+    public void displayPlayerTurnHeader(PlayerModel playerCharacter, EnemyModel enemyCharacter){
+        MENUTEXTUTIL.playerTurnHeaderText(playerCharacter, enemyCharacter);
+    }
+
+    public void displayEnemyTurnHeader(PlayerModel playerCharacter, EnemyModel enemyCharacter){
+        MENUTEXTUTIL.enemyTurnHeaderText(playerCharacter, enemyCharacter);
+    }
+
+    public void displayPlayerDamageCalculationFooter(PlayerModel playerCharacter){
+        MENUTEXTUTIL.playerDamageCalculationFooterText(playerCharacter);
+    }
+
+    public void displayEnemyDamageCalculationFooter(EnemyModel enemyCharacter){
+        MENUTEXTUTIL.enemyDamageCalculationFooterText(enemyCharacter);
+    }
+
 }

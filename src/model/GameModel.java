@@ -1,31 +1,42 @@
 package model;
 
-import handler.OptionHandler;
+import handler.ExplorationHandler;
 import util.ClearScreenUtil;
+import util.KeyListenerUtil;
 
 public class GameModel {
 
     private boolean gamePowerState;
 
-    private final ClearScreenUtil clearScreen;
-    private final MenuModel gameMenu = new MenuModel();
-    private final OptionHandler optionHandler;
+    private final ClearScreenUtil clearScreenUtil;
+    private final KeyListenerUtil keyListenerUtil;
+    private final MenuModel gameMenu;
 
-    public enum GameState { MAINMENU, TOWNMENU, HOUSEMENU, STATUSMENU }
+    private final ExplorationHandler explorationHandler;
+
+    public enum GameState { MAINMENU, TOWNMENU, HOUSEMENU, STATUSMENU, EXPLOREMENU }
     private GameState currentGameState;
 
-    private PlayerModel playerCharacter;
-    private EnemyModel enemyCharacter;
+    private PlayerModel debugPlayerCharacter;
+    private EnemyModel debugEnemyCharacter;
 
     public GameModel() {
         gamePowerState = true;
-        clearScreen = new ClearScreenUtil();
-        optionHandler = new OptionHandler();
 
-        //TODO Implementar um menu de criação de personagem...
-        playerCharacter = new PlayerModel("Lucian Nicolas",100,90,100,50,
-                25,25,100,1000,1,99);
-        enemyCharacter = new EnemyModel("Zombie", 20, 20, 15, 10);
+        clearScreenUtil = new ClearScreenUtil();
+        keyListenerUtil = new KeyListenerUtil();
+
+        explorationHandler = new ExplorationHandler();
+
+        gameMenu = new MenuModel();
+
+        debugPlayerCharacter = new PlayerModel("Lucian Nicolas",100,100,
+                100,100,25,25,100,
+                1000,1,99);
+
+        //TODO Implementar randomizador de monstros...
+        debugEnemyCharacter = new EnemyModel("Zombie", 100, 100, 15,
+                10);
     }
 
     public void setGamePowerState(boolean isTurnedOn){
@@ -46,33 +57,28 @@ public class GameModel {
 
     //TODO Buscar tratamento quando inputar opções inválidas (provavelmente try-catch)...
     public void startGameState(){
-        clearScreen.clear();
+        clearScreenUtil.clearTheScreen();
         gameMenu.displayMainMenu();
 
-        switch (optionHandler.returnChosenOption()){
+        switch (keyListenerUtil.getChosenOption()){
             case 1:
-                System.out.println("Mudando para Cidade...");
-                currentGameState = GameState.TOWNMENU;
-                System.out.println("Mudou para " + getCurrentGameState());
+                setCurrentGameState(GameState.TOWNMENU);
                 break;
             case 2:
-                //TODO Implementar menu de Novo Jogo (relação com criação de personagem)...
+                //TODO Implementar menu de Novo Jogo...
                 break;
             case 3:
-                System.out.println("Encerrando Jogo...");
                 setGamePowerState(false);
         }
     }
 
     public void townMenuState(){
-        clearScreen.clear();
+        clearScreenUtil.clearTheScreen();
         gameMenu.displayTownMenu();
 
-        switch (optionHandler.returnChosenOption()){
+        switch (keyListenerUtil.getChosenOption()){
             case 1:
-                System.out.println("Mudando para Cidade...");
                 setCurrentGameState(GameState.HOUSEMENU);
-                System.out.println("Mudou para " + getCurrentGameState());
                 break;
             case 2:
                 // Taverna...
@@ -91,49 +97,58 @@ public class GameModel {
                 //TODO Implementar menu de Guilda do Corvo...
                 break;
             case 6:
-                // Viagem...
-                //TODO Implementar menu de Viagem...
+                setCurrentGameState(GameState.EXPLOREMENU);
                 break;
         }
 
     }
 
     public void houseMenuState(){
-        clearScreen.clear();
+        clearScreenUtil.clearTheScreen();
         gameMenu.displayHouseMenu();
 
-        switch (optionHandler.returnChosenOption()){
+        switch (keyListenerUtil.getChosenOption()){
             case 1:
-                System.out.println("Mudando para Cidade...");
                 setCurrentGameState(GameState.TOWNMENU);
-                System.out.println("Mudou para " + getCurrentGameState());
                 break;
             case 2:
-                System.out.println("Mudando para Status...");
                 setCurrentGameState(GameState.STATUSMENU);
-                System.out.println("Mudou para " + getCurrentGameState());
                 break;
             case 3:
                 //TODO Ao seguir esse fluxo, por algum motivo não é possível encerrar o jogo quando volta para o Menu Principal...
-                System.out.println("Mudando para Início...");
                 setCurrentGameState(GameState.MAINMENU);
-                System.out.println("Mudou para " + getCurrentGameState());
                 break;
         }
     }
 
     public void statusMenuState(){
-        clearScreen.clear();
-        gameMenu.displayPlayerStatusMenu(playerCharacter);
+        clearScreenUtil.clearTheScreen();
+        gameMenu.displayPlayerStatusMenu(debugPlayerCharacter);
 
-        switch (optionHandler.returnChosenOption()){
+        switch (keyListenerUtil.getChosenOption()){
             case 1:
                 //TODO Implementar menu de Iventário...
                 break;
             case 2:
-                System.out.println("Mudando para Casa...");
                 setCurrentGameState(GameState.HOUSEMENU);
-                System.out.println("Mudou para " + getCurrentGameState());
+                break;
+        }
+    }
+
+    public void exploreMenuState(){
+        clearScreenUtil.clearTheScreen();
+        //TODO Criar menu de exploração...
+        System.out.println("1. Explorar\n" +
+                "2. Voltar para cidade");
+
+        switch (keyListenerUtil.getChosenOption()){
+            case 1:
+                // Explorar...
+                explorationHandler.explorationState(debugPlayerCharacter, debugEnemyCharacter);
+                break;
+            case 2:
+                // Voltar para cidade...
+                setCurrentGameState(GameState.TOWNMENU);
                 break;
         }
     }

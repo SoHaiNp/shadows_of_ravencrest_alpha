@@ -1,5 +1,6 @@
 package util;
 
+import model.EnemyModel;
 import model.PlayerModel;
 
 public class MenuTextUtil {
@@ -57,5 +58,38 @@ public class MenuTextUtil {
                 "+ ---------------------------------------------------------------------------- +");
                 //TODO Incrementar opção de vizualização de iventário do personagem...
     }
+
+    public void playerTurnHeaderText(PlayerModel playerCharacter, EnemyModel enemyCharacter){
+        System.out.println("+---------------------- Turno Jogador -------------------------+\n" +
+                "| + " + playerCharacter.getPlayerName() + " +       Life: + " + playerCharacter.getCurrentHealthPoints() + "/" + playerCharacter.getMaximumHealthPoints() + "\n" +
+                "| + " + enemyCharacter.getenemyName() + " +              Life: + " + enemyCharacter.getCurrentHealthPoints() + "/" + enemyCharacter.getMaximumHealthPoints() + "\n" +
+                "+------------------------- Opções -------------------------+\n" +
+                "| 1. Atacar o inimigo\n" +
+                "| 2. Defender\n" +
+                "| 3. Fugir da batalha\n" +
+                "+----------------------------------------------------------+");
+    }
+
+    public void enemyTurnHeaderText(PlayerModel playerCharacter, EnemyModel enemyCharacter){
+        System.out.println("+---------------------- Turno Inimigo -------------------------+\n" +
+                "| + " + playerCharacter.getPlayerName() + " +       Life: + " + playerCharacter.getCurrentHealthPoints() + "/" + playerCharacter.getMaximumHealthPoints() + "\n" +
+                "| + " + enemyCharacter.getenemyName() + " +              Life: + " + enemyCharacter.getCurrentHealthPoints() + "/" + enemyCharacter.getMaximumHealthPoints());
+    }
+
+    public void playerDamageCalculationFooterText(PlayerModel playerCharacter){
+        System.out.println("+------------------------- Mensagem -------------------------+\n" +
+                "| Você CAUSOU + " + playerCharacter.getAttackPoints() + " + de dano...\n" +
+                "| Pressione um número para passar o turno...\n" +
+                "+-----------------------------------------------------------+");
+    }
+
+    public void enemyDamageCalculationFooterText(EnemyModel enemyCharacter){
+        System.out.println("+------------------------- Mensagem -------------------------+\n" +
+                "| Você SOFREU + " + enemyCharacter.getAttackPoints() + " + de dano...\n" +
+                "| Pressione um número para passar o turno...\n" +
+                "+-----------------------------------------------------------+");
+    }
+
+    //TODO Criar menu de contagem de experiência...
 
 }
